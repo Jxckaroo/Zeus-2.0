@@ -10,6 +10,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "npm": "^6.9.0"
+    "body-parser": "^1.19.0",
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "markdown-table": "^1.1.2",
+    "moment": "^2.24.0",
+    "mysql": "^2.17.1",
+    "node-cron": "^2.0.3",
+    "node-opus": "^0.3.1",
+    "opusscript": "0.0.6",
+    "table": "^5.2.3",
+    "ytdl-core": "^0.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }

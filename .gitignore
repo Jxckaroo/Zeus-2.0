@@ -58,3 +58,7 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# Ignore normal configs but allow .dist configs
+configs/config.json
+configs/admins.json
