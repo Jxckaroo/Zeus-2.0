@@ -62,3 +62,6 @@ typings/
 # Ignore normal configs but allow .dist configs
 configs/config.json
 configs/admins.json
+
+# Ignore PHP storm stuff
+.idea/
