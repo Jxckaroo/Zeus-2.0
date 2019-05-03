@@ -115,8 +115,7 @@ class ApplicationCommand extends Commando.Command {
     async createApplication(message, args) {
         // Create new application
         const applicationDate = Moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-        let sql = `INSERT INTO applications (name, age, location, game, current, conduct, reference, created_at, status) VALUES ('${args["q2"]}', '${args["age"]}', '${args["q3"]}', '${args["q4"]}', '${args["q5"]}', '${args["q6"]}', '${message.author.id}', '${applicationDate}', 'Applied (Discord)')`;
-        let response = await con.query(sql, async function(err, result) {
+        let response = await con.query('INSERT INTO applications (name, age, location, game, current, conduct, reference, created_at, status) VALUES (?,?,?,?,?,?,?,?, "Applied (Discord)")', [args["q2"], args["age"], args["q3"], args["q4"], args["q5"], args["q6"], message.author.id, applicationDate], async function (err, result) {
             if (err) {
                 message.author.send(`There has been an error with your application. Contact Jxckaroo with the following error message:\n\n${err}`);
                 return 'error';
@@ -135,8 +134,7 @@ class ApplicationCommand extends Commando.Command {
         // Update existing application
         let response = await result.forEach(async(element, i) => {
             if (element.reference == message.author.id) {
-                let sql = `UPDATE applications SET name = '${args["q2"]}', age = '${args["age"]}', location = '${args["q3"]}', game = '${args["q4"]}', current = '${args["q5"]}', conduct = '${args["q6"]}', status = 'Applied (Discord)'`;
-                await con.query(sql, async function(err, result) {
+                await con.query('UPDATE applications SET name = ?, age = ?, location = ?, game = ?, current = ?, conduct = ?, status = "Applied (Discord)"', [args["q2"], args["age"], args["q3"], args["q4"], args["q5"], args["q6"]], async function(err, result) {
                     if (err) {
                         message.author.send(`There has been an error updating your application. Contact Jxckaroo with the following error message:\n\n${err}`);
                         return 'error';
