@@ -69,6 +69,8 @@ class ApplicationCommand extends Commando.Command {
         // Application process
         const applicationState = await this.saveApplication(message, args);
 
+        console.log("Updating/Creating application finished, here is the applicationState: " + console.dir(applicationState));
+
         // if (applicationState == "created") {
         //     // Discord game reactions
         //     await this.handleReactions(message);
@@ -102,8 +104,6 @@ class ApplicationCommand extends Commando.Command {
                     }
                 }
             });
-
-            console.log("Updating/Creating application finished, here is the applicationState: " + console.dir(applicationState));
 
             // Clear up channel history
             await this.clearChannelHistory(message);

@@ -17,7 +17,7 @@ class AgeArgumentType extends Commando.ArgumentType {
         }
     }
 
-    static isNumber(val) {
+    isNumber(val) {
         return !isNaN(parseFloat(val)) && isFinite(val);
     }
 
