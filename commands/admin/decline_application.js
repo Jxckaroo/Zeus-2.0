@@ -45,14 +45,12 @@ class DeclineApplicationCommand extends Commando.Command {
             " stick to the guidelines to become a member.");
 
         // Update application status
-        let response = await result.forEach(async(element, i) => {
-            await con.query('UPDATE applications SET status = ?', "Declined", async function(err, result) {
-                if(err) {
-                    console.log(err);
-                } else {
-                    console.log(result);
-                }
-            });
+        await con.query('UPDATE applications SET status = ? WHERE reference = ?', ["Declined", applicant.id], async function(err, result) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(result);
+            }
         });
     }
 }

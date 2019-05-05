@@ -45,14 +45,12 @@ class AcceptApplicationCommand extends Commando.Command {
         member.send("Congratulations, you are now a full member at " + Config.DISCORD_NAME + "!");
 
         // Update application status
-        let response = await result.forEach(async(element, i) => {
-                await con.query('UPDATE applications SET status = ?', "Accepted", async function(err, result) {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        console.log(result);
-                    }
-                });
+        await con.query('UPDATE applications SET status = ? WHERE reference = ?', ["Accepted", applicant.id], async function(err, result) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(result);
+            }
         });
     }
 }
