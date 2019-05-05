@@ -1,5 +1,12 @@
 const Commando = require("discord.js-commando");
 const Config = require("../../configs/config.json");
+const mysql = require('mysql');
+const con = mysql.createConnection({
+    host: Config.DB.HOST,
+    user: Config.DB.USER,
+    password: Config.DB.PASSWORD,
+    database: Config.DB.DATABASE
+});
 const Admins = Config.ADMINS;
 
 class AcceptApplicationCommand extends Commando.Command {
@@ -36,6 +43,17 @@ class AcceptApplicationCommand extends Commando.Command {
 
         message.channel.send("I have accepted that user.");
         member.send("Congratulations, you are now a full member at " + Config.DISCORD_NAME + "!");
+
+        // Update application status
+        let response = await result.forEach(async(element, i) => {
+                await con.query('UPDATE applications SET status = ?', "Accepted", async function(err, result) {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        console.log(result);
+                    }
+                });
+        });
     }
 }
 
