@@ -37,7 +37,7 @@ class AcceptApplicationCommand extends Commando.Command {
         const memberRole = message.guild.roles.find("name", "Member");
         const recruitRole = message.guild.roles.find("name", "Recruit");
         let member = message.guild.members.get(applicant.id),
-            nick   = 'SG | ' + member.displayName || '';
+            nick   = Config.CLAN_PREFIX + ' | ' + member.displayName || '';
 
         member.addRole(memberRole).catch(err => console.log("Error adding member role to user: " + applicant.id + " Error was: " + err + "\n"));
         member.removeRole(recruitRole).catch(err => console.log("Error removing recruit role from user: " + applicant.id + " Error was: " + err + "\n"));
