@@ -53,7 +53,7 @@ And of course Zeus 2.0 itself is open source with a [public repository](https://
 - Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ cd zeus2
+$ cd zeus-2.0
 $ npm install
 $ node .
 ```
