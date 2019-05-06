@@ -134,7 +134,7 @@ class ApplicationCommand extends Commando.Command {
         // Update existing application
         let response = await result.forEach(async(element, i) => {
             if (element.reference == message.author.id) {
-                await con.query('UPDATE applications SET name = ?, age = ?, location = ?, game = ?, current = ?, conduct = ?, status = "Applied (Discord)"', [args["q2"], args["age"], args["q3"], args["q4"], args["q5"], args["q6"]], async function(err, result) {
+                await con.query('UPDATE applications SET name = ?, age = ?, location = ?, game = ?, current = ?, conduct = ?, status = "Applied (Discord)" WHERE reference = ?', [args["q2"], args["age"], args["q3"], args["q4"], args["q5"], args["q6"], element.reference], async function(err, result) {
                     if (err) {
                         message.author.send(`There has been an error updating your application. Contact Jxckaroo with the following error message:\n\n${err}`);
                         return 'error';
