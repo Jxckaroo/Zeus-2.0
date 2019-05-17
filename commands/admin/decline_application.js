@@ -13,6 +13,7 @@ class DeclineApplicationCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: "decline_application",
+            aliases: ["d"],
             group: "admin",
             memberName: "decline_application",
             description: "Decline a member application.",

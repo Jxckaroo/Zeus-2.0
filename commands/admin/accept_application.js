@@ -13,6 +13,7 @@ class AcceptApplicationCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: "accept_application",
+            aliases: ["a"],
             group: "admin",
             memberName: "accept_application",
             description: "Accept a member application.",
